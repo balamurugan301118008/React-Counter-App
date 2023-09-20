@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+    let [count, setCount] = useState(0)
+    let style = {
+        Active: {
+            color: 'green'
+        },
+        Inactive: {
+            color: 'red'
+        },
+        equal: {
+            color: 'yellow'
+        }
+    }
+    return (
+        <React.Fragment>
+            <h2>You're clicked <span style={count > 0 ? style.Active : count == 0 ? style.equal : style.Inactive}>{count}</span> times</h2>
+            <button onClick={() => setCount(count - 1)}>Decrement</button>
+            <button onClick={() => setCount(count = 0)}>Reset</button>
+            <button onClick={() => setCount(count + 1)}>Increment</button>
+        </React.Fragment >
+    )
+
 }
-
-export default App;
